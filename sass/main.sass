@@ -1,0 +1,179 @@
+@import "vars"
+
+*
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+	&:before, &:after
+		-webkit-box-sizing: border-box
+		-moz-box-sizing: border-box
+		box-sizing: border-box
+
+html, body
+	height: 100%
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.65
+	font-family: $default-font
+	overflow-x: hidden
+	opacity: 1
+
+.box
+	height: $boxHeight
+	width: $boxHeight
+	overflow: hidden
+	border-radius: 35px
+	position: absolute
+	left: 50%
+	top: 50%
+	margin-top: -$boxHeight / 2
+	margin-left: -$boxHeight / 2
+	&::after
+		position: relative
+		content: ""
+		display: block
+		top: 0
+		left: 0
+		width: 100%
+		height: $viewHeight
+		background: linear-gradient($origin, $purple 0%, $red 25%, $orange 50%, $red 75%, $purple 100%)
+		animation-name: animateBg
+		animation-duration: $duration * 2
+		animation-timing-function: linear
+		animation-iteration-count: infinite
+
+@keyframes animateBg
+	0%
+		top: 0
+	50%
+		top: $boxHeight - $viewHeight
+	100%
+		top: 0
+
+.logo
+	> div
+		position: absolute
+		top: 50%
+		left: 50%
+		border: 9px solid #fff
+		z-index: 2
+		&.logo-dot
+			border: 7px #fff solid
+			border-radius: 50%
+			right: 23%
+			top: 23%
+			left: auto
+	&-border
+		width: 74%
+		height: 74%
+		border-radius: 35px
+		margin-top: -37%
+		margin-left: -37%
+	&-circle
+		width: 48%
+		height: 48%
+		border-radius: 50%
+		margin-top: -24%
+		margin-left: -24%
+
+@keyframes animateBox
+	0%
+		transform: scale(0)
+		border-radius: 35px
+	3%
+		transform: scale(1.1)
+		border-radius: 50%
+	5%
+		transform: scale(1)
+		border-radius: 35px
+	95%
+		transform: scale(1)
+		border-radius: 35px
+	97%
+		transform: scale(1.1)
+		border-radius: 50%
+	100%
+		transform: scale(0)
+
+.box
+	animation-name: animateBox
+	animation-duration: $duration * 2
+	animation-timing-function: ease
+	animation-iteration-count: infinite
+	animation-direction: alternate
+
+@keyframes animateBorder
+	0%
+		transform: scale(0)
+		border-radius: 50%
+		opacity: 0
+	3%
+		opacity: 0
+	20%
+		transform: scale(1)
+		border-radius: 35px
+		opacity: 1
+	90%
+		transform: scale(1)
+		border-radius: 35px
+
+.logo-border
+	animation-name: animateBorder
+	animation-duration: $duration
+	animation-timing-function: ease
+	animation-iteration-count: infinite
+	animation-direction: alternate
+
+@keyframes animateCircle
+	0%
+		transform: scale(0)
+		opacity: 0
+	3%
+		transform: scale(0)
+		opacity: 0
+	10%
+		transform: scale(1.3)
+		opacity: 1
+	15%
+		transform: scale(1)
+	95%
+		transform: scale(1)
+		background-color: transparent
+	97%
+		transform: scale(1.2)
+		background-color: #fff
+	100%
+		transform: scale(1)
+
+.logo-circle
+	animation-name: animateCircle
+	animation-duration: $duration
+	animation-timing-function: ease
+	animation-iteration-count: infinite
+	animation-direction: alternate
+
+@keyframes animateDot
+	0%
+		opacity: 0
+	10%
+		opacity: 0
+	15%
+		opacity: 1
+	90%
+		opacity: 1
+	95%
+		opacity: 0
+	100%
+		opacity: 0
+
+.logo-dot
+	animation-name: animateDot
+	animation-duration: $duration * 2
+	animation-timing-function: ease
+	animation-iteration-count: infinite
+	animation-direction: alternate
+
+@import "media" // Всегда в конце
